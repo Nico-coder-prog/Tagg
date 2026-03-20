@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Site Aléatoire</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: background 0.4s ease;
+      color: #ffffff;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    #quote {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background: rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <h1>Générateur Aléatoire</h1>
+  <div id="quote"></div>
+  <button id="btn">Nouveau hasard</button>
+
+  <script>
+    const quotes = [
+      "Le hasard ne favorise que les esprits préparés.",
+      "Chaque jour est une nouvelle chance.",
+      "Rien n’est écrit d’avance.",
+      "Ose, et le monde s’ouvrira à toi.",
+      "Les petits pas mènent aux grands changements."
+    ];
+
+    function randomItem(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function randomColor() {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    function refreshRandom() {
+      document.getElementById("quote").textContent = randomItem(quotes);
+      document.body.style.background = randomColor();
+    }
+
+    document.getElementById("btn").addEventListener("click", refreshRandom);
+
+    // Au chargement de la page
+    refreshRandom();
+  </script>
+</body>
+</html>
